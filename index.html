@@ -1,46 +1,724 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project B.E.A.T.</title>
-    <style>
-        body {
-            background-color: #ffb6d3;
-            font-family: Verdana, sans-serif;
-            text-align: center;
-            padding: 60px 20px;
-            color: #272727;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project BEAT</title>
 
-        h1 {
-            color: #b91c1c;
-            font-size: 60px;
-        }
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 
-        p {
-            font-size: 20px;
-        }
+<style>
 
-        button {
-            background-color: #b91c1c;
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-        }
-    </style>
+/* WEBSITE COLORS */
+
+:root {
+    --background: #f9e8eb;
+    --pink: #edc3cd;
+    --dark-pink: #dba3b2;
+    --black: #171717;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--background);
+    color: var(--black);
+    font-family: 'DM Sans', sans-serif;
+}
+
+button, a {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* NAVIGATION BAR */
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 5%;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 35px;
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+    padding-bottom: 5px;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    border-bottom: 1px solid black;
+}
+
+.nav-button {
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 12px 22px;
+}
+
+/* MAIN HOMEPAGE */
+
+.hero {
+    display: grid;
+    grid-template-columns: 1.1fr 1.3fr 0.8fr;
+    align-items: center;
+    gap: 35px;
+    min-height: 78vh;
+    padding: 40px 5%;
+}
+
+.eyebrow {
+    font-size: 11px;
+    letter-spacing: 2px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(55px, 6.5vw, 100px);
+    font-weight: 400;
+    line-height: 0.98;
+    letter-spacing: -3px;
+    margin-bottom: 25px;
+}
+
+.description {
+    font-size: 15px;
+    line-height: 1.7;
+    max-width: 320px;
+    margin-bottom: 25px;
+}
+
+.primary-button {
+    display: inline-block;
+    background: black;
+    color: white;
+    padding: 14px 27px;
+    border: none;
+    border-radius: 40px;
+    font-size: 13px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.primary-button:hover {
+    background: #49363d;
+    transform: translateY(-3px);
+}
+
+/* CENTER IMAGE */
+
+.product-display {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 480px;
+    isolation: isolate;
+}
+
+.grid-background {
+    position: absolute;
+    inset: 10% 0;
+    background-image:
+        linear-gradient(#c79da52b 1px, transparent 1px),
+        linear-gradient(90deg, #c79da52b 1px, transparent 1px);
+    background-size: 45px 45px;
+    z-index: -2;
+}
+
+.circle-background {
+    position: absolute;
+    width: 85%;
+    aspect-ratio: 1;
+    background: #f0d0d8;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.energy-drink {
+    width: 85%;
+    max-width: 440px;
+    border-radius: 16px;
+    transform: rotate(8deg);
+    box-shadow: 15px 25px 45px #7a465333;
+    animation: float 5s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(8deg);
+    }
+    50% {
+        transform: translateY(-12px) rotate(5deg);
+    }
+}
+
+.image-label {
+    position: absolute;
+    top: 12%;
+    left: 2%;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: var(--dark-pink);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 12px;
+    transform: rotate(-12deg);
+}
+
+/* RIGHT SIDE INFORMATION */
+
+.right-content {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+
+.mission {
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.text-link {
+    color: black;
+    display: inline-block;
+    margin-top: 15px;
+    font-size: 13px;
+    text-underline-offset: 5px;
+}
+
+.info-card {
+    border: 1px solid #a98991;
+    border-radius: 120px 120px 0 0;
+    padding: 55px 25px 30px;
+    background: #ffffff20;
+}
+
+.info-card h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 31px;
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 18px;
+}
+
+.info-card p {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* EDUCATIONAL TOPICS */
+
+.categories {
+    margin-top: 55px;
+}
+
+.categories p {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+.category-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.category-buttons button {
+    background: var(--pink);
+    border: none;
+    color: black;
+    border-radius: 30px;
+    padding: 10px 16px;
+    font-size: 12px;
+}
+
+.category-buttons button:hover {
+    background: var(--dark-pink);
+}
+
+/* ADDITIONAL PAGES */
+
+.page {
+    display: none;
+    animation: appear 0.5s ease;
+}
+
+.page.active {
+    display: block;
+}
+
+@keyframes appear {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.content-section {
+    padding: 70px 8%;
+    min-height: 75vh;
+}
+
+.section-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(40px, 6vw, 75px);
+    font-weight: 400;
+    margin-bottom: 25px;
+}
+
+.section-description {
+    max-width: 650px;
+    line-height: 1.8;
+    margin-bottom: 35px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: #ffffff50;
+    border: 1px solid #e0bcc5;
+    padding: 30px;
+    border-radius: 20px;
+}
+
+.card h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 25px;
+    font-weight: 400;
+    margin-bottom: 15px;
+}
+
+.card p {
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* FOOTER */
+
+footer {
+    border-top: 1px solid #ddbec6;
+    padding: 25px 5%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+}
+
+/* MOBILE FRIENDLY DESIGN */
+
+@media (max-width: 950px) {
+    .hero {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .right-content {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+    }
+}
+
+@media (max-width: 650px) {
+    nav {
+        flex-wrap: wrap;
+        gap: 22px;
+        justify-content: center;
+    }
+
+    .nav-links {
+        gap: 20px;
+    }
+
+    .nav-button {
+        display: none;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        padding: 30px 7%;
+    }
+
+    .right-content {
+        display: flex;
+    }
+
+    .product-display {
+        min-height: 350px;
+    }
+
+    .energy-drink {
+        width: 75%;
+    }
+
+    h1 {
+        font-size: 65px;
+    }
+
+    footer {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+</style>
 </head>
+
 <body>
 
-    <h1>PROJECT BEAT</h1>
-    <h2>Rethink the Rush.</h2>
+<!-- NAVIGATION BAR -->
 
-    <p>Empowering adolescents to make informed
-    decisions about energy drink consumption.</p>
+<nav>
+    <div class="logo">BEAT.</div>
 
-    <button onclick="alert('Welcome to Project BEAT!')">
+    <ul class="nav-links">
+        <li><a href="#home" data-page="home">Home</a></li>
+        <li><a href="#team" data-page="team">Our Team</a></li>
+        <li><a href="#quiz" data-page="quiz">Quiz</a></li>
+        <li><a href="#videos" data-page="videos">Videos</a></li>
+    </ul>
+
+    <button class="nav-button" onclick="showPage('quiz')">
+        Get Started ↗
+    </button>
+</nav>
+
+<!-- HOME PAGE -->
+
+<main id="home" class="page active">
+
+    <section class="hero">
+
+        <!-- LEFT SIDE -->
+
+        <div class="left-content">
+
+            <p class="eyebrow">
+                A HOSA Health Education Initiative
+            </p>
+
+            <h1>
+                Rethink<br>
+                the<br>
+                Rush.
+            </h1>
+
+            <p class="description">
+                Empowering adolescents to understand
+                the effects of energy drinks and make
+                informed decisions about their health.
+            </p>
+
+            <button class="primary-button"
+                onclick="showPage('learn')">
+                Discover More ↗
+            </button>
+
+            <div class="categories">
+
+                <p>EXPLORE THE FACTS</p>
+
+                <div class="category-buttons">
+
+                    <button onclick="openTopic('risks')">
+                        Health Risks
+                    </button>
+
+                    <button onclick="openTopic('effects')">
+                        Side Effects
+                    </button>
+
+                    <button onclick="openTopic('alternatives')">
+                        Alternatives
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CENTER ENERGY DRINK IMAGE -->
+
+        <div class="product-display">
+
+            <div class="grid-background"></div>
+            <div class="circle-background"></div>
+
+            <img
+                src="energy-drink.webp"
+                alt="Pink energy drink can"
+                class="energy-drink"
+            >
+
+            <div class="image-label">
+                Know the<br>facts.
+            </div>
+
+        </div>
+
+        <!-- RIGHT SIDE -->
+
+        <div class="right-content">
+
+            <div class="mission">
+
+                <p>
+                    We're a student-led initiative
+                    dedicated to raising awareness
+                    about energy drink consumption
+                    among adolescents.
+                </p>
+
+                <a href="#team" class="text-link">
+                    Meet our team ↗
+                </a>
+
+            </div>
+
+            <div class="info-card">
+
+                <p class="eyebrow">THE BIGGER PICTURE</p>
+
+                <h2>
+                    What's really<br>
+                    inside the can?
+                </h2>
+
+                <p>
+                    Discover the science behind
+                    energy drinks, their potential
+                    health effects, and the importance
+                    of making informed choices.
+                </p>
+
+                <a href="#learn" class="text-link">
+                    Explore the facts ↗
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<!-- OUR TEAM PAGE -->
+
+<section id="team" class="page content-section">
+
+    <p class="eyebrow">THE PEOPLE BEHIND THE PROJECT</p>
+
+    <h2 class="section-title">Meet our team.</h2>
+
+    <p class="section-description">
+        Add your team's introduction here.
+    </p>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Team Member 01</h3>
+            <p>Add name, role, and biography here.</p>
+        </div>
+
+        <div class="card">
+            <h3>Team Member 02</h3>
+            <p>Add name, role, and biography here.</p>
+        </div>
+
+        <div class="card">
+            <h3>Team Member 03</h3>
+            <p>Add name, role, and biography here.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- QUIZ PAGE -->
+
+<section id="quiz" class="page content-section">
+
+    <p class="eyebrow">TEST YOUR KNOWLEDGE</p>
+
+    <h2 class="section-title">BEAT the myths.</h2>
+
+    <p class="section-description">
+        How much do you really know about energy drinks?
+        Our interactive educational quiz will go here.
+    </p>
+
+    <div class="card">
+        <h3>Coming soon.</h3>
+        <p>Quiz questions will be added here.</p>
+    </div>
+
+</section>
+
+<!-- VIDEOS PAGE -->
+
+<section id="videos" class="page content-section">
+
+    <p class="eyebrow">WATCH AND LEARN</p>
+
+    <h2 class="section-title">Beyond the label.</h2>
+
+    <p class="section-description">
+        Explore educational videos and learn more
+        about energy drink awareness.
+    </p>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Video 01</h3>
+            <p>Your first educational video goes here.</p>
+        </div>
+
+        <div class="card">
+            <h3>Video 02</h3>
+            <p>Your second educational video goes here.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- EDUCATIONAL INFORMATION PAGE -->
+
+<section id="learn" class="page content-section">
+
+    <p class="eyebrow">KNOW THE FACTS</p>
+
+    <h2 class="section-title">Behind the buzz.</h2>
+
+    <div class="cards">
+
+        <div class="card" id="risks">
+            <h3>Health Risks</h3>
+            <p>Add your research about potential
+            health risks here.</p>
+        </div>
+
+        <div class="card" id="effects">
+            <h3>Side Effects</h3>
+            <p>Add information about common
+            symptoms and effects here.</p>
+        </div>
+
+        <div class="card" id="alternatives">
+            <h3>Alternatives</h3>
+            <p>Add your recommendations for
+            healthier alternatives here.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+    <span>© Project BEAT | HOSA Health Education</span>
+    <span>Awareness. Education. Empowerment.</span>
+</footer>
+
+<!-- JAVASCRIPT FOR NAVIGATION -->
+
+<script>
+
+function renderPage(pageId) {
+
+    const target = document.getElementById(pageId);
+
+    if (!target || !target.classList.contains('page')) {
+        pageId = 'home';
+    }
+
+    document.querySelectorAll('.page').forEach(page => {
+        page.classList.remove('active');
+    });
+
+    document.getElementById(pageId).classList.add('active');
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.classList.toggle(
+            'active',
+            link.dataset.page === pageId
+        );
+    });
+
+    window.scrollTo(0, 0);
+}
+
+function showPage(pageId) {
+    window.location.hash = pageId;
+    renderPage(pageId);
+}
+
+function openTopic(topicId) {
+    showPage('learn');
+
+    requestAnimationFrame(() => {
+        document.getElementById(topicId)
+            .scrollIntoView({ behavior: 'smooth' });
+    });
+}
+
+window.addEventListener('hashchange', () => {
+    renderPage(location.hash.slice(1) || 'home');
+});
+
+renderPage(location.hash.slice(1) || 'home');
+
+</script>
+
+</body>
+</html>
+
         Learn More
     </button>
 
